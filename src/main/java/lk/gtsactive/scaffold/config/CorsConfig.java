@@ -1,4 +1,4 @@
-package lk.gtsactive.scaffold.configs;
+package lk.gtsactive.scaffold.config;
 
 import org.jspecify.annotations.NullMarked;
 import org.springframework.context.annotation.Bean;
