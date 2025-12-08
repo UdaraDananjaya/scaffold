@@ -1,0 +1,18 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: bedtime-stories-core
+  jpa:
+    hibernate:
+      ddl-auto: update # automatically update the schema if required
+  datasource:
+    url: jdbc:mysql://localhost:3306/bedtime_stories_sb_db
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
