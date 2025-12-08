@@ -1,11 +1,15 @@
 package lk.gtsactive.scaffold.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "user")
 public class UserEntity {
