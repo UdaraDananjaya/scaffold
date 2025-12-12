@@ -2,6 +2,7 @@ package lk.gtsactive.scaffold.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,9 +19,12 @@ public class SecurityConfig {
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/swagger-ui.html").permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().
+
+                        // .anyRequest().authenticated()
                 )
                 .httpBasic(AbstractHttpConfigurer::disable)
+                //.httpBasic((httpBasic) -> {})
                 .formLogin(AbstractHttpConfigurer::disable);
                 //.httpBasic(httpBasic -> httpBasic.disable())
                 //.formLogin(form -> form.disable());
