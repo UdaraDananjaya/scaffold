@@ -22,7 +22,8 @@ public class HealthController {
     }
 
     @GetMapping("/health")
-    @PermitAll
+    @PreAuthorize("isAuthenticated()")
+
     public ResponseEntity<Map<String, Object>> health() {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "UP");

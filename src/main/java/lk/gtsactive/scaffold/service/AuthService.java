@@ -1,21 +1,17 @@
 package lk.gtsactive.scaffold.service;
 
+import lk.gtsactive.scaffold.dto.responses.auth.LoginResponse;
 import lk.gtsactive.scaffold.entity.AuthDataEntity;
 import lk.gtsactive.scaffold.entity.UserEntity;
 import lk.gtsactive.scaffold.repository.AuthDataJpaRepository;
 import lk.gtsactive.scaffold.security.JwtTokenProvider;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +22,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final AuthDataJpaRepository authDataRepository;
 
-    public String login(String username, String password, HttpServletRequest request) {
+    public LoginResponse login(String username, String password, HttpServletRequest request) {
 
         Authentication authentication =
                 authenticationManager.authenticate(
@@ -39,6 +35,7 @@ public class AuthService {
         UserDetails userDetails =
                 (UserDetails) authentication.getPrincipal();
 
+        assert userDetails != null;
         String token = jwtTokenProvider.generateToken(userDetails);
 
         UserEntity user =
@@ -52,6 +49,9 @@ public class AuthService {
 
         authDataRepository.save(authData);
 
-        return token;
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setToken(token);
+
+        return loginResponse;
     }
 }

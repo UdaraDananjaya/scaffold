@@ -24,8 +24,9 @@ public class PasswordUtil {
     }
 
     public static boolean isEncoded(String password) {
-        return password != null && password.startsWith("$2a$")
-                || password.startsWith("$2b$")
+        if (password != null && password.startsWith("$2a$")) return true;
+        assert password != null;
+        return password.startsWith("$2b$")
                 || password.startsWith("$2y$");
     }
 }
