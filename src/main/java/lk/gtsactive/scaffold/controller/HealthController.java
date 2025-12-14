@@ -1,4 +1,4 @@
-package lk.gtsactive.scaffold.controllers;
+package lk.gtsactive.scaffold.controller;
 
 import jakarta.annotation.security.PermitAll;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +12,9 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.springframework.security.authorization.SingleResultAuthorizationManager.permitAll;
-
 @RestController
 @RequestMapping("/api/test")
-public class TestController {
+public class HealthController {
     @PostMapping("/ping")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<String> ping() {

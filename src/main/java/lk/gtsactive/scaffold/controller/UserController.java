@@ -1,8 +1,8 @@
-package lk.gtsactive.scaffold.controllers;
+package lk.gtsactive.scaffold.controller;
 
 import jakarta.annotation.security.PermitAll;
-import lk.gtsactive.scaffold.dtos.requests.users.CreateUserRequest;
-import lk.gtsactive.scaffold.services.UserService;
+import lk.gtsactive.scaffold.dto.requests.user.CreateUserRequest;
+import lk.gtsactive.scaffold.service.UserService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

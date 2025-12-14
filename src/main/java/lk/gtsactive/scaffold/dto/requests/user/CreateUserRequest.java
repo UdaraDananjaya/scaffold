@@ -1,4 +1,4 @@
-package lk.gtsactive.scaffold.dtos.requests.users;
+package lk.gtsactive.scaffold.dto.requests.user;
 
 import lombok.Getter;
 import lombok.Setter;

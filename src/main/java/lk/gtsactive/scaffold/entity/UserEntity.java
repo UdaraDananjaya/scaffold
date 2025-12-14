@@ -1,4 +1,4 @@
-package lk.gtsactive.scaffold.entities;
+package lk.gtsactive.scaffold.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,19 +8,21 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "users")
 @Setter
 @Getter
-@Entity
-@Table(name = "user")
+
 public class UserEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "email")
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password")
+    @Column(nullable = false)
     private String password;
 
     @Column(name = "first_name")
