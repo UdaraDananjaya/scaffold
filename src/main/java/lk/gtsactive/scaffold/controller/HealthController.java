@@ -1,12 +1,10 @@
 package lk.gtsactive.scaffold.controller;
 
-import jakarta.annotation.security.PermitAll;
+import lk.gtsactive.scaffold.security.crypto.Encrypted;
+import lk.gtsactive.scaffold.util.crypto.CryptoUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -31,6 +29,20 @@ public class HealthController {
         response.put("app", "Scaffold API");
 
         return ResponseEntity.ok(response);
+    }
+
+    @Encrypted
+    @GetMapping("/encrypt")
+    public ResponseEntity<String> encrypt() {
+        return ResponseEntity.ok("OK");
+    }
+
+    @PostMapping("/decrypt")
+    public ResponseEntity<String> decrypt(@RequestBody String payload) {
+
+        String decrypted = CryptoUtil.decrypt(payload);
+
+        return ResponseEntity.ok(decrypted);
     }
 
 }

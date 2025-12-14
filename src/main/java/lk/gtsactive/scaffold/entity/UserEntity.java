@@ -1,6 +1,7 @@
 package lk.gtsactive.scaffold.entity;
 
 import jakarta.persistence.*;
+import lk.gtsactive.scaffold.helper.converter.EncryptConverter;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,6 +26,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
+    @Convert(converter = EncryptConverter.class)
     @Column(name = "first_name")
     private String firstName;
 

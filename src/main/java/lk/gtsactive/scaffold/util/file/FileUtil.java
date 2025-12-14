@@ -7,7 +7,7 @@ import java.nio.file.*;
 import java.util.Set;
 import java.util.UUID;
 
-public final class FileUtils {
+public final class FileUtil {
 
     public static String generateSafeFileName(String originalFilename) {
         String extension = getExtension(originalFilename);

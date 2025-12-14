@@ -1,6 +1,6 @@
 package lk.gtsactive.scaffold.config.security;
 
-import lk.gtsactive.scaffold.service.AuthService;
+import lk.gtsactive.scaffold.security.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +20,7 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
 
         http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -31,8 +30,8 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/swagger-ui.html"
                         ).permitAll()
-                        //.anyRequest().permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
+                        //.anyRequest().authenticated()
                 )
                 .addFilterBefore(
                         jwtAuthFilter,
@@ -46,7 +45,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration config
-    ) throws Exception {
+    ) {
         return config.getAuthenticationManager();
     }
 }

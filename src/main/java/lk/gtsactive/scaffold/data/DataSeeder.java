@@ -4,6 +4,7 @@ import lk.gtsactive.scaffold.entity.UserEntity;
 import lk.gtsactive.scaffold.repository.UserJpaRepository;
 import lk.gtsactive.scaffold.util.password.PasswordUtil;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class DataSeeder  implements CommandLineRunner {
     private final UserJpaRepository userRepository;
 
+    @NullMarked
     @Override
     public void run(String... args) {
 

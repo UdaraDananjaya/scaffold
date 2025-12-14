@@ -1,11 +1,9 @@
-package lk.gtsactive.scaffold.config.security;
+package lk.gtsactive.scaffold.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.gtsactive.scaffold.security.JwtTokenProvider;
-import lk.gtsactive.scaffold.service.AuthService;
 import lk.gtsactive.scaffold.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
